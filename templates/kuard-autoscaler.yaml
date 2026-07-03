@@ -7,8 +7,8 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: {{ include "kuard.fullname" . }}-{{ .Values.envName }}
-  minReplicas: 1
-  maxReplicas: 10
+  minReplicas: {{ .Values.autoscalingMinReplicas }}
+  maxReplicas: {{ .Values.autoscalingMaxReplicas }}
   metrics:
   - type: Resource
     {{- with .Values.autoscalingResource }}

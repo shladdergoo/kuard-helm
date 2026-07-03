@@ -3,6 +3,9 @@ envName: prd
 autoscaling:
   enabled: true
 
+autoscalingMinReplicas: 1
+autoscalingMaxReplicas: 10
+
 autoscalingResource:
   name: cpu
   target:

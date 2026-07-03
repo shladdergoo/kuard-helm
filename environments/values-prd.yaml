@@ -12,11 +12,6 @@ autoscalingResource:
     type: Utilization
     averageUtilization: 50
 
-volumes:
-  - name: "kuard-data"
-    hostPath:
-      path: "/var/lib/kuard"
-
 image:
   tag: blue-1.0.0
 

@@ -20,3 +20,8 @@ readinessProbe:
 volumeMounts:
   - mountPath: "/data"
     name: "kuard-data"
+
+volumes:
+  - name: "kuard-data"
+    hostPath:
+      path: "/var/lib/kuard"

@@ -5,11 +5,6 @@ autoscaling:
 
 replicaCount: 1
 
-volumes:
-  - name: "kuard-data"
-    hostPath:
-      path: "/var/lib/kuard"
-
 image:
   tag: blue-latest
 

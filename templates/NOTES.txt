@@ -1,3 +1,15 @@
-1. Start port forwarding to access the app from the host machine:
+{{- if contains "LoadBalancer" .Values.service.type }}
+1. If deplying to Minikube, start the tunnel to create a routable IP for the service.
+
+  minikube tunnel
+
+2. Get the application URL by running this command:
+
+  echo http://$(kubectl get service --namespace {{ .Values.envName }} {{ include "kuard.fullname" . }}-{{ .Values.envName }} --output jsonpath='{.status.loadBalancer.ingress[0].ip}'):{{ .Values.service.port }}
+
+{{- else if contains "NodePort" .Values.service.type }}
+1. Start port forwarding to access the app from the host machine
 
   kubectl --namespace {{ .Values.envName }} port-forward service/{{ include "kuard.fullname" . }}-{{ .Values.envName }} {{ .Values.service.port }}
+
+{{- end }}

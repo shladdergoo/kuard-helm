@@ -1,0 +1,17 @@
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: {{ include "kuard.fullname" . }}-{{ .Values.envName }}
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: {{ include "kuard.fullname" . }}-{{ .Values.envName }}
+  minReplicas: 1
+  maxReplicas: 10
+  metrics:
+  - type: Resource
+    {{- with .Values.autoscalingResource }}
+    resource:
+      {{- toYaml . | nindent 6 }} 
+    {{- end }}

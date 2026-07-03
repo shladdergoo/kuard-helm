@@ -48,6 +48,10 @@ Selector labels
 {{- define "kuard.selectorLabels" -}}
 app.kubernetes.io/name: {{ include "kuard.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
+app.kubernetes.io/env: {{ .Values.envName }}
+{{- end }}
+
+{{/*
 {{- end }}
 
 {{/*

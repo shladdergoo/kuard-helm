@@ -15,3 +15,9 @@ Install or upgrade the chart:
 e.g.
 
 `make install/dev`
+
+Uninstall the chart:
+
+e.g.
+
+`make uninstall/dev`

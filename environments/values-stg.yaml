@@ -1,0 +1,37 @@
+envName: stg
+
+autoscaling:
+  enabled: false
+
+replicaCount: 2
+
+volumes:
+  - name: "kuard-data"
+    hostPath:
+      path: "/var/lib/kuard"
+
+image:
+  tag: blue
+
+service:
+  type: NodePort
+  port: 8081
+
+resources:
+  requests:
+    cpu: "100m"
+    memory: "256Mi"
+  limits:
+    cpu: "2000m"
+    memory: "512Mi"
+
+livenessProbe:
+  initialDelaySeconds: 5
+  timeoutSeconds: 1
+  periodSeconds: 5
+  failureThreshold: 2
+readinessProbe:
+  initialDelaySeconds: 30
+  timeoutSeconds: 1
+  periodSeconds: 5
+  failureThreshold: 2

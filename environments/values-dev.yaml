@@ -1,3 +1,5 @@
+envName: dev
+
 autoscaling:
   enabled: false
 

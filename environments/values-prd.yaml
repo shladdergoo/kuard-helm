@@ -3,7 +3,7 @@ envName: prd
 autoscaling:
   enabled: true
 
-autoscalingMinReplicas: 1
+autoscalingMinReplicas: 3
 autoscalingMaxReplicas: 10
 
 autoscalingResource:
@@ -18,7 +18,7 @@ volumes:
       path: "/var/lib/kuard"
 
 image:
-  tag: blue
+  tag: blue-1.0.0
 
 service:
   type: LoadBalancer

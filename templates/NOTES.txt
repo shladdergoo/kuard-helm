@@ -12,4 +12,8 @@
 
   kubectl --namespace {{ .Values.envName }} port-forward service/{{ include "kuard.fullname" . }}-{{ .Values.envName }} {{ .Values.service.port }}
 
+2. Access the app at
+
+  http://127.0.0.1:{{ .Values.service.port }}
+
 {{- end }}
